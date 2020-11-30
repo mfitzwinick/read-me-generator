@@ -26,9 +26,17 @@ inquirer.prompt(
     },
 
     {
-        type: "input",
+        type: "list",
         message: "What licence is this under?",
-        name: "license"
+        name: "license",
+        choices: ['MIT', 'ISL', 'Unlicensed']
+    },
+
+    {
+        type: "checkbox",
+        message: "What languages are used?",
+        name: "license",
+        choices: ['HTML', 'CSS', 'Javascript', 'Python']
     },
 
     ]).then(function(response){
