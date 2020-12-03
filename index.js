@@ -42,16 +42,8 @@ inquirer.prompt(
     },
     {
         type: "checkbox",
-        message: "What languages are used? (Use space bar to select)",
-        name: "languages",
-        choices: [
-            'HTML', 'CSS', 'Javascript', 'Python'
-        ]
-    },
-    {
-        type: "checkbox",
         message: "How can would you like users to contribute? (Use space bar to select)",
-        name: "contribution-guidelines",
+        name: "contributionguidelines",
         choices: [
             'Report bugs', 'Suggest Enhancements', 'Pull Requests', 'None'
         ]
@@ -64,7 +56,7 @@ inquirer.prompt(
     
 
     ]).then(function(response){
-        let template = `# ${`response.title`} [![forthebadge](https://forthebadge.com/images/badges/made-with-markdown.svg)](https://forthebadge.com)\n ## Description: \n ${`response.description`} \n ## Installation: \n ${`response.installation`} \n ## Instructions: \n ${`response.instructions`} [![forthebadge](https://forthebadge.com/images/badges/uses-badges.svg)](https://forthebadge.com) \n ## Languages: \n ${`response.languages`}\n ## License: \n ${`response.license`}\n [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) \n ## Contribution Guidelines: \n ${`response.contribution-guidelines`}\n ### Tests: \n ${`response.tests`} \n ${'[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)'}`
+        let template = `# ${response.title} \n [![forthebadge](https://forthebadge.com/images/badges/made-with-markdown.svg)](https://forthebadge.com)\n ## Description: \n ${response.description} \n [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com) \n ## Installation: \n ${response.installation} \n ## Instructions: \n ${response.instructions} [![forthebadge](https://forthebadge.com/images/badges/uses-badges.svg)](https://forthebadge.com) \n ## Languages: \n ${response.languages}\n ## License: \n ${`response.license`}\n [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) \n ## Contribution Guidelines: \n ${response.contributionguidelines}\n ### Tests: \n ${response.tests} \n [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebaadge.com)`
         
         fs.writeFile("README.md", template, function(err){
           err  ? console.log(err):console.log("Success!")
