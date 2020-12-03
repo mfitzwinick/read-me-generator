@@ -55,21 +55,17 @@ inquirer.prompt(
         choices: [
             'Report bugs', 'Suggest Enhancements', 'Pull Requests', 'None'
         ]
+    },
         {
             type: "input",
             message: "How should tests be run?",
             name: "tests"
         },
-    },
+    
 
     ]).then(function(response){
-        let template = `# ${response.title} \n## Description: \n ${response.description} \n 
-        ## Installation: \n ${response.installation} \n 
-        ## Instructions: \n ${response.instructions} \n 
-        ## Languages: \n ${response.languages}\n 
-        ## License: \n ${response.license}\n [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-        ## Contribution Guidelines: \n ${response.contribution-guidelines}\n 
-        ### Tests: \n ${response.tests} \n ${'[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)'}`
+        let template = `# ${response.title} \n ## Description: \n ${response.description} \n ## Installation: \n ${response.installation} \n ## Instructions: \n ${response.instructions} \n ## Languages: \n ${response.languages}\n ## License: \n ${response.license}\n [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+        ## Contribution Guidelines: \n ${response.contribution-guidelines}\n ### Tests: \n ${response.tests} \n ${'[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)'}`
 
         fs.writeFile("README.md", template, function(err){
           err  ? console.log(err):console.log("Success!")
